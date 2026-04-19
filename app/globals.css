@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-volvo-dark: #0b0c10;
+  --color-volvo-darker: #060709;
+  --color-volvo-accent: #1e3a8a;
+  --color-volvo-light: #f3f4f6;
+  --color-volvo-silver: #9ca3af;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+  
+  body {
+    background-color: var(--color-volvo-dark);
+    color: var(--color-volvo-light);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-volvo-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-volvo-silver);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-volvo-light);
+}
+
+/* Fallback for native loading indicator */
+.loading-spinner {
+  border: 3px solid rgba(255,255,255,0.1);
+  border-left-color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
