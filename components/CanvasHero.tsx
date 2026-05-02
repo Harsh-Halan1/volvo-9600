@@ -131,44 +131,44 @@ export default function CanvasHero() {
         <canvas ref={canvasRef} className="w-full h-full object-cover" />
         
         {/* Overlays */}
-        <div className="absolute inset-x-8 top-1/4 pointer-events-none">
+        <div className="absolute inset-x-8 top-1/8 pointer-events-none">
           
-          <div className={`transition-opacity duration-700 ease-in-out absolute max-w-xl
+          <div className={`transition-all duration-700 ease-in-out absolute max-w-xl p-8 md:p-10 rounded-3xl backdrop-blur-xs bg-black/10 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]
             ${completion >= 0 && completion < 0.20 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               The Volvo 9600 XL.
             </h1>
-            <p className="text-xl mt-4 text-gray-200 drop-shadow-md">
+            <p className="text-xl mt-4 text-gray-200 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] font-medium">
               A masterclass in engineering. Scroll to assemble.
             </p>
           </div>
 
-          <div className={`transition-opacity duration-700 ease-in-out absolute max-w-xl
+          <div className={`transition-all duration-700 ease-in-out absolute max-w-xl p-8 md:p-10 rounded-3xl backdrop-blur-xs bg-black/10 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]
             ${completion >= 0.22 && completion < 0.45 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               Heavy-Duty Chassis.
             </h2>
-            <p className="text-xl mt-4 text-gray-200 drop-shadow-md">
+            <p className="text-xl mt-4 text-gray-200 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] font-medium">
               Built on an unstinting foundation of steel and power.
             </p>
           </div>
           
-          <div className={`transition-opacity duration-700 ease-in-out absolute max-w-xl
+          <div className={`transition-all duration-700 ease-in-out absolute max-w-xl p-8 md:p-10 rounded-3xl backdrop-blur-xs bg-black/10 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]
             ${completion >= 0.48 && completion < 0.70 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               Maximum Comfort.
             </h2>
-            <p className="text-xl mt-4 text-gray-200 drop-shadow-md">
+            <p className="text-xl mt-4 text-gray-200 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] font-medium">
               Premium double-deck sleeper interior designed for tranquility.
             </p>
           </div>
 
-          <div className={`transition-opacity duration-700 ease-in-out absolute max-w-xl
+          <div className={`transition-all duration-700 ease-in-out absolute max-w-xl p-8 md:p-10 rounded-3xl backdrop-blur-xs bg-black/10 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]
             ${completion >= 0.72 && completion < 0.95 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
               Panoramic Vision.
             </h2>
-            <p className="text-xl mt-4 text-gray-200 drop-shadow-md">
+            <p className="text-xl mt-4 text-gray-200 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] font-medium">
               Seeing the world with absolute clarity and control.
             </p>
           </div>

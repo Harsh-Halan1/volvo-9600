@@ -89,7 +89,6 @@ export default function ContactForm() {
                 value={formData.fullName}
                 onChange={handleChange}
                 className="w-full bg-[#0b0c10] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
-                placeholder="John Doe"
               />
             </div>
 
@@ -103,7 +102,6 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full bg-[#0b0c10] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
-                placeholder="john@company.com"
               />
             </div>
 
@@ -117,7 +115,6 @@ export default function ContactForm() {
                 value={formData.company}
                 onChange={handleChange}
                 className="w-full bg-[#0b0c10] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
-                placeholder="Acme Voyages"
               />
             </div>
 

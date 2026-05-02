@@ -1,9 +1,13 @@
 import CanvasHero from '../components/CanvasHero';
 import ContactForm from '../components/ContactForm';
+import Footer from '../components/Footer';
 
 export const metadata = {
   title: 'Volvo 9600 XL | Premium Sleeper Coach',
   description: 'Discover the pinnacle of commercial travel with the Volvo 9600 XL Premium Sleeper Coach.',
+  icons: {
+    icon: '/Logo.png',
+  },
 }
 
 export default function Home() {
@@ -21,11 +25,8 @@ export default function Home() {
       */}
       <ContactForm />
       
-      {/* Minimal Footer */}
-      <footer className="w-full bg-[#060709] py-8 text-center text-gray-600 text-sm border-t border-white/5">
-        <p>&copy; {new Date().getFullYear()} Volvo Buses. All rights reserved.</p>
-        <p className="mt-2">This is a concept landing page.</p>
-      </footer>
+      {/* Footer Section */}
+      <Footer />
     </main>
   );
 }
