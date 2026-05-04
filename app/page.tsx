@@ -3,8 +3,8 @@ import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Volvo 9600 XL | Premium Sleeper Coach',
-  description: 'Discover the pinnacle of commercial travel with the Volvo 9600 XL Premium Sleeper Coach.',
+  title: 'Surendra & Co. | Premium Coach Body Builders',
+  description: 'Experience the craftsmanship of Surendra & Co. — premier coach body builders delivering custom sleeper coaches with unmatched quality.',
   icons: {
     icon: '/Logo.png',
   },

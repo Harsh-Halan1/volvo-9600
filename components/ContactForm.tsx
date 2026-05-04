@@ -51,7 +51,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-[#060709] to-[#12141a] py-24 px-6 z-10">
+    <section id="contact-form" className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-[#060709] to-[#12141a] py-24 px-6 z-10">
       
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-20 pointer-events-none"></div>
       
@@ -60,18 +60,18 @@ export default function ContactForm() {
         {/* Left Column - Copy */}
         <div className="flex flex-col justify-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            Configure Your <span className="text-blue-500">Fleet.</span>
+            Start Your <span className="text-blue-500">Build.</span>
           </h2>
           <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-            Ready to upgrade to the Volvo 9600 XL? Connect with our enterprise sales team to discuss custom requirements, fleet logistics, and pricing details.
+            Ready to commission a custom coach? Connect with Surendra & Co. to discuss your requirements, fleet specifications, and get a detailed quote.
           </p>
           
           <div className="flex items-center space-x-6 text-sm text-gray-500 uppercase tracking-widest mt-auto mb-4 md:mb-0">
+            <span>Custom-Built</span>
+            <span className="w-1 h-1 rounded-full bg-blue-500"></span>
+            <span>Durable</span>
+            <span className="w-1 h-1 rounded-full bg-blue-500"></span>
             <span>Premium</span>
-            <span className="w-1 h-1 rounded-full bg-blue-500"></span>
-            <span>Reliable</span>
-            <span className="w-1 h-1 rounded-full bg-blue-500"></span>
-            <span>Unstoppable</span>
           </div>
         </div>
 
@@ -128,7 +128,7 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full bg-[#0b0c10] border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors resize-none"
-                placeholder="Tell us about your fleet needs..."
+                placeholder="Tell us about your coach requirements..."
               ></textarea>
             </div>
 

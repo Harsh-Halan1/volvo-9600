@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Volvo 9600 XL | Premium Sleeper Coach',
-  description: 'Experience the assembly of the premium Volvo 9600 XL sleeper coach.',
+  title: 'Surendra & Co. | Premium Coach Body Builders',
+  description: 'Experience the craftsmanship of Surendra & Co. — premier coach body builders.',
 }
 
 export default function RootLayout({

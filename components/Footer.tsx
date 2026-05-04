@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 tracking-wide">
-                Surendra & Co.
+                SURENDRA & CO.
               </h3>
               <div className="flex items-center gap-2 mt-2">
                 <Briefcase size={14} className="text-[#3b82f6]" />

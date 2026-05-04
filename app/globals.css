@@ -12,7 +12,6 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     font-family: var(--font-sans);
   }
   
@@ -52,3 +51,14 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Slow pulse animation for Enter Overlay logo */
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
