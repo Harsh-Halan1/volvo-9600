@@ -1,149 +1,181 @@
 @import "tailwindcss";
 
 /* ══════════════════════════════════════════════
-   SURENDRA & CO. — DESIGN SYSTEM v2.0
-   Apple Product-Page Level Sophistication
+   SURENDRA & CO. — DESIGN SYSTEM v3.0
+   Industrial Premium · B2B Engineering Aesthetic
    ══════════════════════════════════════════════ */
 
 @theme {
-  /* ── Core Palette ── */
-  --color-midnight: #0A0F1A;
-  --color-midnight-light: #111827;
-  --color-midnight-surface: #151C2C;
-  --color-gold: #D4AF37;
-  --color-gold-light: #E8C547;
-  --color-gold-dark: #B8941F;
-  --color-cyan: #06B6D4;
-  --color-cyan-light: #22D3EE;
+  /* Backgrounds */
+  --color-bg-base:      #0D1A24;
+  --color-bg-surface:   #152030;
+  --color-bg-elevated:  #1C2D3E;
 
-  /* ── Neutral Palette ── */
-  --color-surface: #1A1F2E;
-  --color-surface-light: #232A3B;
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
-  --color-border: rgba(255, 255, 255, 0.08);
+  /* Accents */
+  --color-amber:        #C8851A;
+  --color-amber-l:      #E8A832;
+  --color-blue:         #3A7FBF;
+  --color-blue-l:       #5599D4;
 
-  /* ── Typography ── */
-  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
-  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  /* Text */
+  --color-text-primary:   #EDE8DF;
+  --color-text-secondary: #8A9BAB;
+  --color-text-tertiary:  #556A7A;
+
+  /* Legacy compat */
+  --color-midnight:     #0D1A24;
+  --color-gold:         #C8851A;
+  --color-gold-light:   #E8A832;
 }
 
-/* ── Lenis Smooth Scroll Base ── */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+/* ── CSS Custom Properties ── */
+:root {
+  --bg-base:        #0D1A24;
+  --bg-surface:     #152030;
+  --bg-elevated:    #1C2D3E;
+
+  --accent-amber:   #C8851A;
+  --accent-amber-l: #E8A832;
+  --accent-blue:    #3A7FBF;
+  --accent-blue-l:  #5599D4;
+
+  --text-primary:   #EDE8DF;
+  --text-secondary: #8A9BAB;
+  --text-tertiary:  #556A7A;
+
+  --border-subtle:  rgba(200, 133, 26, 0.15);
+  --border-strong:  rgba(200, 133, 26, 0.40);
+  --border-blue:    rgba(58, 127, 191, 0.20);
+
+  --overlay-dark:   rgba(13, 26, 36, 0.70);
+  --overlay-glass:  rgba(21, 32, 48, 0.55);
+
+  --shadow-amber:   0 0 40px rgba(200, 133, 26, 0.18);
+  --shadow-blue:    0 0 30px rgba(58, 127, 191, 0.15);
 }
 
 @layer base {
   html {
-    font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto;
   }
 
   body {
-    background-color: var(--color-midnight);
-    color: var(--color-text-primary);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
     overflow-x: hidden;
+    font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   }
 
   ::selection {
-    background: rgba(212, 175, 55, 0.3);
+    background: rgba(200, 133, 26, 0.3);
     color: #fff;
   }
+}
+
+/* ── Font Utility Classes ── */
+.font-barlow {
+  font-family: var(--font-barlow), 'Barlow Condensed', system-ui, sans-serif;
+}
+.font-body {
+  font-family: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
 }
 
 /* ══════════════════════════════════════════════
    CUSTOM SCROLLBAR
    ══════════════════════════════════════════════ */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-midnight);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.3);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 175, 55, 0.6);
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: rgba(200,133,26,0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(200,133,26,0.5); }
 
 /* ══════════════════════════════════════════════
-   UTILITY CLASSES
+   GLASSMORPHIC CARDS
    ══════════════════════════════════════════════ */
-
-/* Glass card effect */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 1.5rem;
+  background: var(--overlay-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+}
+.glass-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-amber);
 }
 
 .glass-card-strong {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(21, 32, 48, 0.75);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
 }
 
-/* Text gradient utilities */
-.text-gradient-gold {
-  background: linear-gradient(135deg, #D4AF37 0%, #E8C547 50%, #D4AF37 100%);
+/* ══════════════════════════════════════════════
+   TEXT GRADIENTS
+   ══════════════════════════════════════════════ */
+.text-gradient-amber {
+  background: linear-gradient(135deg, #C8851A 0%, #E8A832 50%, #C8851A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C8851A 0%, #E8A832 50%, #C8851A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .text-gradient-white {
-  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  background: linear-gradient(180deg, #EDE8DF 0%, #8A9BAB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ══════════════════════════════════════════════
-   FLOATING LABEL INPUTS (Material Design Style)
+   FLOATING LABEL INPUTS
    ══════════════════════════════════════════════ */
-.floating-field {
-  position: relative;
-  width: 100%;
-}
+.floating-field { position: relative; width: 100%; }
 
 .floating-field input,
-.floating-field textarea {
+.floating-field textarea,
+.floating-field select {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(237, 232, 223, 0.15);
   padding: 1.5rem 0 0.75rem 0;
   font-size: 1rem;
-  color: var(--color-text-primary);
+  color: var(--text-primary);
   outline: none;
   transition: border-color 0.3s ease;
-  font-family: var(--font-display);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+.floating-field select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A9BAB' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+}
+
+.floating-field select option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
 }
 
 .floating-field input:focus,
-.floating-field textarea:focus {
-  border-bottom-color: var(--color-gold);
+.floating-field textarea:focus,
+.floating-field select:focus {
+  border-bottom-color: var(--accent-amber);
 }
 
 .floating-field label {
@@ -151,55 +183,54 @@ html.lenis body {
   top: 1.5rem;
   left: 0;
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: var(--text-tertiary);
   pointer-events: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: left;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 .floating-field input:focus ~ label,
 .floating-field input:not(:placeholder-shown) ~ label,
 .floating-field textarea:focus ~ label,
-.floating-field textarea:not(:placeholder-shown) ~ label {
+.floating-field textarea:not(:placeholder-shown) ~ label,
+.floating-field select:focus ~ label,
+.floating-field select.has-value ~ label {
   top: 0;
-  font-size: 0.7rem;
-  color: var(--color-gold);
-  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  color: var(--accent-amber);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-/* Focus underline animation */
 .floating-field::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
-  height: 2px;
-  background: var(--color-gold);
+  height: 1px;
+  background: var(--accent-amber);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(-50%);
 }
-
-.floating-field:focus-within::after {
-  width: 100%;
-}
+.floating-field:focus-within::after { width: 100%; }
 
 /* ══════════════════════════════════════════════
-   LOADING SPINNER
+   LOADING SPINNER (form submit)
    ══════════════════════════════════════════════ */
 .loading-spinner {
-  border: 3px solid rgba(10, 15, 26, 0.2);
-  border-left-color: #0A0F1A;
+  border: 2px solid rgba(13, 26, 36, 0.3);
+  border-left-color: #0D1A24;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
+  0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
@@ -208,51 +239,74 @@ html.lenis body {
    ══════════════════════════════════════════════ */
 @keyframes orb-float {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 15px) scale(0.95); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.95); }
 }
-
 @keyframes orb-float-reverse {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-25px, 20px) scale(0.95); }
-  66% { transform: translate(15px, -25px) scale(1.05); }
+  33%       { transform: translate(-25px, 20px) scale(0.95); }
+  66%       { transform: translate(15px, -25px) scale(1.05); }
 }
+.orb-animate         { animation: orb-float 8s ease-in-out infinite; }
+.orb-animate-reverse { animation: orb-float-reverse 10s ease-in-out infinite; }
 
-.orb-animate {
-  animation: orb-float 8s ease-in-out infinite;
+/* ══════════════════════════════════════════════
+   SCROLL LINE ANIMATION (hero indicator)
+   ══════════════════════════════════════════════ */
+@keyframes scroll-line {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
-
-.orb-animate-reverse {
-  animation: orb-float-reverse 10s ease-in-out infinite;
+.scroll-line-animate {
+  animation: scroll-line 1.8s ease-in-out infinite;
 }
 
 /* ══════════════════════════════════════════════
-   SLOW PULSE (Enter Overlay)
+   TIMELINE LINE ANIMATION (TheMaking section)
    ══════════════════════════════════════════════ */
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
+@keyframes draw-line {
+  from { width: 0; }
+  to   { width: 100%; }
 }
-
-@keyframes pulse-slow {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+.timeline-line-animate {
+  animation: draw-line 1.2s ease-out forwards;
 }
 
 /* ══════════════════════════════════════════════
-   HORIZONTAL SCROLL CARD GRADIENTS
+   PHASE INDICATOR (right rail)
    ══════════════════════════════════════════════ */
-.card-gradient-gold {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(184, 148, 31, 0.05) 100%);
+.phase-dot-active {
+  background: var(--accent-amber);
+  box-shadow: 0 0 8px rgba(200,133,26,0.6);
+}
+.phase-dot-inactive {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
 }
 
-.card-gradient-cyan {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(34, 211, 238, 0.05) 100%);
+/* ══════════════════════════════════════════════
+   MOBILE ASSEMBLY CROSSFADE
+   ══════════════════════════════════════════════ */
+.mobile-phase-bg {
+  transition: opacity 0.4s ease-in-out;
 }
 
-.card-gradient-purple {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 100%);
+/* ══════════════════════════════════════════════
+   STAT COUNTER ANIMATION
+   ══════════════════════════════════════════════ */
+@keyframes count-up-reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-revealed {
+  animation: count-up-reveal 0.6s ease-out forwards;
 }
 
-.card-gradient-amber {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.05) 100%);
-}
+/* ══════════════════════════════════════════════
+   CARD ACCENT GRADIENTS
+   ══════════════════════════════════════════════ */
+.card-gradient-amber  { background: linear-gradient(135deg, rgba(200,133,26,0.12) 0%, rgba(200,133,26,0.03) 100%); }
+.card-gradient-blue   { background: linear-gradient(135deg, rgba(58,127,191,0.12) 0%, rgba(58,127,191,0.03) 100%); }
+.card-gradient-purple { background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(139,92,246,0.03) 100%); }

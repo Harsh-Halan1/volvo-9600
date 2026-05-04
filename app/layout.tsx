@@ -1,34 +1,43 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Manrope } from 'next/font/google'
-import LenisProvider from '../components/LenisProvider'
+import { Barlow_Condensed, DM_Sans, JetBrains_Mono } from 'next/font/google'
 
-const manrope = Manrope({
+const barlow = Barlow_Condensed({
   subsets: ['latin'],
-  variable: '--font-display',
+  variable: '--font-barlow',
   display: 'swap',
-  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  weight: ['400', '600', '700', '800'],
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+  weight: ['300', '400', '500'],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  weight: ['400', '500'],
 })
 
 export const metadata: Metadata = {
   title: 'Surendra & Co. | Master Coach Body Builders — Ahmedabad',
-  description: 'Experience the art of coachbuilding. Surendra & Co. — master coachbuilders in Ahmedabad crafting premium sleeper coaches with 25+ years of engineering excellence.',
-  icons: {
-    icon: '/Logo.png',
-  },
+  description:
+    'Experience the art of coachbuilding. Surendra & Co. — master coachbuilders in Ahmedabad crafting premium sleeper coaches with 25+ years of engineering excellence.',
+  icons: { icon: '/Logo.png' },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={manrope.variable}>
-      <body className={`${manrope.className} antialiased bg-[#0A0F1A] text-[#F1F5F9]`}>
-        <LenisProvider>
-          {children}
-        </LenisProvider>
+    <html
+      lang="en"
+      className={`${barlow.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="antialiased">
+        {children}
       </body>
     </html>
   )
