@@ -40,12 +40,12 @@ export async function POST(request: Request) {
 
     // 3. Send Email using Resend
     const { error: emailError } = await resend.emails.send({
-      from: 'Volvo 9600 XL Portal <onboarding@resend.dev>', // Update with a verified domain later
-      to: ['sales@company.com'], // Placeholder for sales team
+      from: 'Surendra & Co. Portal <onboarding@resend.dev>', // Update with a verified domain later
+      to: ['surendra_bareja@yahoo.com'], // Surendra & Co. sales
       replyTo: email,
       subject: `New Lead: ${fullName} from ${company}`,
       html: `
-        <h2>New Lead - Volvo 9600 XL</h2>
+        <h2>New Lead — Surendra & Co.</h2>
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company}</p>

@@ -1,50 +1,201 @@
 @import "tailwindcss";
 
+/* ══════════════════════════════════════════════
+   SURENDRA & CO. — DESIGN SYSTEM v2.0
+   Apple Product-Page Level Sophistication
+   ══════════════════════════════════════════════ */
+
 @theme {
-  --color-volvo-dark: #0b0c10;
-  --color-volvo-darker: #060709;
-  --color-volvo-accent: #1e3a8a;
-  --color-volvo-light: #f3f4f6;
-  --color-volvo-silver: #9ca3af;
-  
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* ── Core Palette ── */
+  --color-midnight: #0A0F1A;
+  --color-midnight-light: #111827;
+  --color-midnight-surface: #151C2C;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E8C547;
+  --color-gold-dark: #B8941F;
+  --color-cyan: #06B6D4;
+  --color-cyan-light: #22D3EE;
+
+  /* ── Neutral Palette ── */
+  --color-surface: #1A1F2E;
+  --color-surface-light: #232A3B;
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  /* ── Typography ── */
+  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Lenis Smooth Scroll Base ── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 @layer base {
   html {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
-    background-color: var(--color-volvo-dark);
-    color: var(--color-volvo-light);
+    background-color: var(--color-midnight);
+    color: var(--color-text-primary);
     overflow-x: hidden;
   }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #fff;
+  }
 }
 
-/* Custom scrollbar for premium feel */
+/* ══════════════════════════════════════════════
+   CUSTOM SCROLLBAR
+   ══════════════════════════════════════════════ */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-volvo-dark);
+  background: var(--color-midnight);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-volvo-silver);
-  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-volvo-light);
+  background: rgba(212, 175, 55, 0.6);
 }
 
-/* Fallback for native loading indicator */
+/* ══════════════════════════════════════════════
+   UTILITY CLASSES
+   ══════════════════════════════════════════════ */
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+}
+
+/* Text gradient utilities */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #E8C547 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════════════
+   FLOATING LABEL INPUTS (Material Design Style)
+   ══════════════════════════════════════════════ */
+.floating-field {
+  position: relative;
+  width: 100%;
+}
+
+.floating-field input,
+.floating-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.5rem 0 0.75rem 0;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: var(--font-display);
+}
+
+.floating-field input:focus,
+.floating-field textarea:focus {
+  border-bottom-color: var(--color-gold);
+}
+
+.floating-field label {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left;
+}
+
+.floating-field input:focus ~ label,
+.floating-field input:not(:placeholder-shown) ~ label,
+.floating-field textarea:focus ~ label,
+.floating-field textarea:not(:placeholder-shown) ~ label {
+  top: 0;
+  font-size: 0.7rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Focus underline animation */
+.floating-field::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.floating-field:focus-within::after {
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════
+   LOADING SPINNER
+   ══════════════════════════════════════════════ */
 .loading-spinner {
-  border: 3px solid rgba(255,255,255,0.1);
-  border-left-color: #fff;
+  border: 3px solid rgba(10, 15, 26, 0.2);
+  border-left-color: #0A0F1A;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  animation: spin 1s linear infinite;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -52,7 +203,32 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Slow pulse animation for Enter Overlay logo */
+/* ══════════════════════════════════════════════
+   AMBIENT ORB ANIMATIONS
+   ══════════════════════════════════════════════ */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes orb-float-reverse {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-25px, 20px) scale(0.95); }
+  66% { transform: translate(15px, -25px) scale(1.05); }
+}
+
+.orb-animate {
+  animation: orb-float 8s ease-in-out infinite;
+}
+
+.orb-animate-reverse {
+  animation: orb-float-reverse 10s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════
+   SLOW PULSE (Enter Overlay)
+   ══════════════════════════════════════════════ */
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
 }
@@ -62,3 +238,21 @@
   50% { opacity: 0.7; transform: scale(1.05); }
 }
 
+/* ══════════════════════════════════════════════
+   HORIZONTAL SCROLL CARD GRADIENTS
+   ══════════════════════════════════════════════ */
+.card-gradient-gold {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(184, 148, 31, 0.05) 100%);
+}
+
+.card-gradient-cyan {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(34, 211, 238, 0.05) 100%);
+}
+
+.card-gradient-purple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 100%);
+}
+
+.card-gradient-amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.05) 100%);
+}
