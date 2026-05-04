@@ -177,8 +177,7 @@ export default function MasterNarrative() {
       });
       introTl.to(".intro-crafted", { scale: 1.5, opacity: 0, ease: "power1.inOut" });
 
-      // ── 3. CRAFT HUD CARDS ──
-      const craftCards = gsap.utils.toArray<HTMLElement>(".craft-card");
+      // ── 3. CRAFT HUD CARDS (BUS LAYOUT TRAVERSAL) ──
       const craftTl = gsap.timeline({
         scrollTrigger: {
           trigger: craftSectionRef.current,
@@ -188,21 +187,17 @@ export default function MasterNarrative() {
         }
       });
       
-      craftCards.forEach((card, i) => {
-        // Fade in
-        craftTl.fromTo(card, 
-          { opacity: 0, y: 50, scale: 0.95 },
-          { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power2.out" }
-        );
-        // Hold
-        craftTl.to({}, { duration: 1 });
-        // Fade out (unless it's the last one which fades out as we leave the section)
-        if (i !== craftCards.length - 1) {
-           craftTl.to(card, { opacity: 0, y: -50, scale: 1.05, duration: 1, ease: "power2.in" });
-        }
-      });
-      // Fade out the last card
-      craftTl.to(craftCards[craftCards.length - 1], { opacity: 0, y: -50, scale: 1.05, duration: 1, ease: "power2.in" });
+      // Slide in from right
+      craftTl.fromTo(".craft-bus-container", 
+        { x: "150vw", opacity: 0.5 },
+        { x: "0vw", opacity: 1, duration: 2, ease: "power3.out" }
+      );
+      // Hold in the center
+      craftTl.to({}, { duration: 3 });
+      // Slide out to left
+      craftTl.to(".craft-bus-container", 
+        { x: "-150vw", opacity: 0.5, duration: 2, ease: "power3.in" }
+      );
 
       // ── 4. BENTO GRID BUS TRAVERSAL ──
       const bentoPieces = gsap.utils.toArray<HTMLElement>(".bento-piece");
@@ -296,30 +291,45 @@ export default function MasterNarrative() {
           </div>
         </section>
 
-        {/* ── 3. CRAFTSMANSHIP HUD ── */}
+        {/* ── 3. CRAFTSMANSHIP HUD (BUS LAYOUT) ── */}
         <section ref={craftSectionRef} className="h-[400vh] relative">
-          <div className="sticky top-0 h-screen w-full flex items-center justify-center">
-             {CRAFT_CARDS.map((card, idx) => (
-                <div key={idx} className="craft-card absolute w-[90vw] max-w-2xl opacity-0">
-                  <div className="glass-card-strong bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 md:p-14 shadow-2xl">
-                     <div className="absolute top-0 left-10 w-16 h-[3px] rounded-full" style={{ backgroundColor: card.accentColor }} />
-                     <div className="flex items-baseline gap-4 mb-4">
-                        <span className="text-6xl font-black tracking-tighter" style={{ color: card.accentColor, opacity: 0.3 }}>
-                          {card.number}
-                        </span>
-                        <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/50">
-                          {card.subtitle}
-                        </span>
-                     </div>
-                     <h3 className="text-3xl md:text-5xl font-extrabold tracking-tighter text-white mb-6">
-                        {card.title}
-                     </h3>
-                     <p className="text-lg text-white/60 font-medium leading-relaxed">
-                        {card.description}
-                     </p>
-                  </div>
+          <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+             <div className="craft-bus-container absolute w-full max-w-5xl aspect-auto md:aspect-[2.2/1] grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 px-4 md:px-12">
+                
+                {/* Handcrafted Luxury (Front) */}
+                <div className="bg-white/5 backdrop-blur-2xl border border-white/10 p-6 md:p-8 flex flex-col justify-center rounded-3xl md:rounded-tl-[80px] md:rounded-bl-3xl col-start-1 col-span-1 row-start-1 row-span-2 relative overflow-hidden shadow-2xl">
+                   <div className="absolute top-0 left-10 w-16 h-[3px] rounded-full bg-[#F59E0B]" />
+                   <span className="text-4xl font-black tracking-tighter text-[#F59E0B]/30 mb-2">01</span>
+                   <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2 leading-tight">Handcrafted Luxury</h3>
+                   <p className="text-sm text-white/60 font-medium">Premium sleeper pods finished with Italian-grade upholstery, mood lighting systems, and individual climate zones.</p>
                 </div>
-             ))}
+
+                {/* Bespoke Architecture (Roof) */}
+                <div className="bg-white/5 backdrop-blur-2xl border border-white/10 p-6 md:p-8 flex flex-col justify-center rounded-3xl md:rounded-tr-[40px] md:rounded-bl-none col-start-2 col-span-2 row-start-1 row-span-1 relative overflow-hidden shadow-2xl">
+                   <div className="absolute top-0 left-10 w-16 h-[3px] rounded-full bg-[#8B5CF6]" />
+                   <div className="flex items-center gap-4 mb-2">
+                     <span className="text-4xl font-black tracking-tighter text-[#8B5CF6]/30">02</span>
+                     <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">Bespoke Architecture</h3>
+                   </div>
+                   <p className="text-sm text-white/60 font-medium max-w-lg">Custom-engineered floor plans designed for optimal passenger flow, thermal insulation, and acoustic isolation.</p>
+                </div>
+
+                {/* Unyielding Framework (Chassis) */}
+                <div className="bg-white/5 backdrop-blur-2xl border border-white/10 p-6 md:p-8 flex flex-col justify-center rounded-3xl md:rounded-b-[40px] md:rounded-t-md col-start-2 col-span-1 row-start-2 row-span-1 relative overflow-hidden shadow-2xl">
+                   <div className="absolute top-0 left-10 w-16 h-[3px] rounded-full bg-[#D4AF37]" />
+                   <span className="text-3xl font-black tracking-tighter text-[#D4AF37]/30 mb-1">03</span>
+                   <h3 className="text-xl font-extrabold text-white mb-2 leading-tight">Unyielding Framework</h3>
+                   <p className="text-xs text-white/60 font-medium">Precision-welded high-tensile steel framework engineered for maximum safety and decades of endurance.</p>
+                </div>
+
+                {/* Seamless Integration (Engine) */}
+                <div className="bg-white/5 backdrop-blur-2xl border border-white/10 p-6 md:p-8 flex flex-col justify-center rounded-3xl md:rounded-br-[80px] md:rounded-tl-md col-start-3 col-span-1 row-start-2 row-span-1 relative overflow-hidden shadow-2xl">
+                   <div className="absolute top-0 left-10 w-16 h-[3px] rounded-full bg-[#06B6D4]" />
+                   <span className="text-3xl font-black tracking-tighter text-[#06B6D4]/30 mb-1">04</span>
+                   <h3 className="text-xl font-extrabold text-white mb-2 leading-tight">Seamless Integration</h3>
+                   <p className="text-xs text-white/60 font-medium">Flawless fusion of Volvo B11R heavy-duty chassis with custom body architecture. 430HP engine.</p>
+                </div>
+             </div>
           </div>
         </section>
 
