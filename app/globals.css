@@ -1,312 +1,302 @@
 @import "tailwindcss";
 
-/* ══════════════════════════════════════════════
-   SURENDRA & CO. — DESIGN SYSTEM v3.0
-   Industrial Premium · B2B Engineering Aesthetic
-   ══════════════════════════════════════════════ */
+/* ========================================================
+   THE BLUEPRINT — Design System
+   Engineering Drawing Aesthetic for Surendra & Co.
+   ======================================================== */
 
-@theme {
-  /* Backgrounds */
-  --color-bg-base:      #0D1A24;
-  --color-bg-surface:   #152030;
-  --color-bg-elevated:  #1C2D3E;
-
-  /* Accents */
-  --color-amber:        #C8851A;
-  --color-amber-l:      #E8A832;
-  --color-blue:         #3A7FBF;
-  --color-blue-l:       #5599D4;
-
-  /* Text */
-  --color-text-primary:   #EDE8DF;
-  --color-text-secondary: #8A9BAB;
-  --color-text-tertiary:  #556A7A;
-
-  /* Legacy compat */
-  --color-midnight:     #0D1A24;
-  --color-gold:         #C8851A;
-  --color-gold-light:   #E8A832;
-}
-
-/* ── CSS Custom Properties ── */
 :root {
-  --bg-base:        #0D1A24;
-  --bg-surface:     #152030;
-  --bg-elevated:    #1C2D3E;
+  /* BLUEPRINT MODE (default) */
+  --bg-base:           #0A1628;
+  --bg-surface:        #0F1E35;
+  --bg-elevated:       #152540;
 
-  --accent-amber:   #C8851A;
-  --accent-amber-l: #E8A832;
-  --accent-blue:    #3A7FBF;
-  --accent-blue-l:  #5599D4;
+  --grid-line:         rgba(100, 160, 220, 0.08);
+  --grid-opacity:      0.08;
+  --annotation-line:   rgba(100, 160, 220, 0.60);
+  --annotation-fill:   rgba(100, 160, 220, 0.08);
+  --annotation-opacity: 0.60;
 
-  --text-primary:   #EDE8DF;
-  --text-secondary: #8A9BAB;
-  --text-tertiary:  #556A7A;
+  --accent-blueprint:  #4A9EE8;
+  --accent-amber:      #C8851A;
+  --accent-amber-l:    #E8A832;
+  --accent-active:     #4A9EE8;
 
-  --border-subtle:  rgba(200, 133, 26, 0.15);
-  --border-strong:  rgba(200, 133, 26, 0.40);
-  --border-blue:    rgba(58, 127, 191, 0.20);
+  --text-primary:      #C8DCF0;
+  --text-secondary:    #6A8BAA;
+  --text-tertiary:     #3A5570;
 
-  --overlay-dark:   rgba(13, 26, 36, 0.70);
-  --overlay-glass:  rgba(21, 32, 48, 0.55);
+  --border-blueprint:  rgba(74, 158, 232, 0.25);
+  --border-amber:      rgba(200, 133, 26, 0.25);
+  --border-active-opacity: 0.25;
 
-  --shadow-amber:   0 0 40px rgba(200, 133, 26, 0.18);
-  --shadow-blue:    0 0 30px rgba(58, 127, 191, 0.15);
+  /* REALITY MODE TARGET VALUES */
+  --bg-base-real:        #0D1A24;
+  --bg-surface-real:     #152030;
+  --text-primary-real:   #EDE8DF;
+  --text-secondary-real: #8A9BAB;
+
+  /* Fonts */
+  --font-blueprint: var(--font-mono), 'Courier New', monospace;
+  --font-heading:   var(--font-barlow), 'Arial Narrow', sans-serif;
+  --font-body:      var(--font-dm-sans), 'Helvetica', sans-serif;
 }
 
-@layer base {
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: auto;
-  }
-
-  body {
-    background-color: var(--bg-base);
-    color: var(--text-primary);
-    overflow-x: hidden;
-    font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
-  }
-
-  ::selection {
-    background: rgba(200, 133, 26, 0.3);
-    color: #fff;
-  }
+/* ---- Base Reset ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* ── Font Utility Classes ── */
-.font-barlow {
-  font-family: var(--font-barlow), 'Barlow Condensed', system-ui, sans-serif;
-}
-.font-body {
-  font-family: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
-}
-.font-mono {
-  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+html {
+  scroll-behavior: auto; /* GSAP handles scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ══════════════════════════════════════════════
-   CUSTOM SCROLLBAR
-   ══════════════════════════════════════════════ */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: rgba(200,133,26,0.25); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(200,133,26,0.5); }
-
-/* ══════════════════════════════════════════════
-   GLASSMORPHIC CARDS
-   ══════════════════════════════════════════════ */
-.glass-card {
-  background: var(--overlay-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-}
-.glass-card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-amber);
-}
-
-.glass-card-strong {
-  background: rgba(21, 32, 48, 0.75);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 24px;
-}
-
-/* ══════════════════════════════════════════════
-   TEXT GRADIENTS
-   ══════════════════════════════════════════════ */
-.text-gradient-amber {
-  background: linear-gradient(135deg, #C8851A 0%, #E8A832 50%, #C8851A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-gold {
-  background: linear-gradient(135deg, #C8851A 0%, #E8A832 50%, #C8851A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-white {
-  background: linear-gradient(180deg, #EDE8DF 0%, #8A9BAB 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ══════════════════════════════════════════════
-   FLOATING LABEL INPUTS
-   ══════════════════════════════════════════════ */
-.floating-field { position: relative; width: 100%; }
-
-.floating-field input,
-.floating-field textarea,
-.floating-field select {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(237, 232, 223, 0.15);
-  padding: 1.5rem 0 0.75rem 0;
-  font-size: 1rem;
+body {
+  background-color: var(--bg-base);
   color: var(--text-primary);
-  outline: none;
-  transition: border-color 0.3s ease;
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-family: var(--font-blueprint);
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-.floating-field select {
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A9BAB' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0 center;
-}
-
-.floating-field select option {
-  background: var(--bg-surface);
-  color: var(--text-primary);
-}
-
-.floating-field input:focus,
-.floating-field textarea:focus,
-.floating-field select:focus {
-  border-bottom-color: var(--accent-amber);
-}
-
-.floating-field label {
-  position: absolute;
-  top: 1.5rem;
-  left: 0;
-  font-size: 1rem;
-  color: var(--text-tertiary);
+/* ---- Blueprint Grid Background ---- */
+.blueprint-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: left;
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  background-image: url('/assets/svg/grid-texture.svg');
+  background-size: 24px 24px;
+  background-repeat: repeat;
+  opacity: var(--grid-opacity);
+  transition: opacity 0.3s ease;
 }
 
-.floating-field input:focus ~ label,
-.floating-field input:not(:placeholder-shown) ~ label,
-.floating-field textarea:focus ~ label,
-.floating-field textarea:not(:placeholder-shown) ~ label,
-.floating-field select:focus ~ label,
-.floating-field select.has-value ~ label {
-  top: 0;
-  font-size: 0.65rem;
-  color: var(--accent-amber);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 600;
+/* ---- Typography Utilities ---- */
+.font-blueprint {
+  font-family: var(--font-blueprint);
 }
 
-.floating-field::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1px;
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-tracked {
+  letter-spacing: 0.3em;
+}
+
+.text-tracked-wide {
+  letter-spacing: 0.5em;
+}
+
+.text-tracked-narrow {
+  letter-spacing: 0.2em;
+}
+
+/* ---- Annotation Line Style ---- */
+.annotation-line {
+  stroke: var(--annotation-line);
+  stroke-width: 1;
+  fill: none;
+}
+
+.annotation-text {
+  font-family: var(--font-blueprint);
+  font-size: 9px;
+  fill: var(--text-primary);
+}
+
+/* ---- Chamfered Corner Clip ---- */
+.chamfer-tr {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+
+.chamfer-tl {
+  clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);
+}
+
+/* ---- Blueprint Separator ---- */
+.blueprint-separator {
+  border: none;
+  border-top: 1px dashed var(--annotation-line);
+  opacity: 0.5;
+}
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-blueprint);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
   background: var(--accent-amber);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(-50%);
-}
-.floating-field:focus-within::after { width: 100%; }
-
-/* ══════════════════════════════════════════════
-   LOADING SPINNER (form submit)
-   ══════════════════════════════════════════════ */
-.loading-spinner {
-  border: 2px solid rgba(13, 26, 36, 0.3);
-  border-left-color: #0D1A24;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* ---- Selection ---- */
+::selection {
+  background: rgba(74, 158, 232, 0.3);
+  color: var(--text-primary);
 }
 
-/* ══════════════════════════════════════════════
-   AMBIENT ORB ANIMATIONS
-   ══════════════════════════════════════════════ */
-@keyframes orb-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(30px, -20px) scale(1.05); }
-  66%       { transform: translate(-20px, 15px) scale(0.95); }
-}
-@keyframes orb-float-reverse {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(-25px, 20px) scale(0.95); }
-  66%       { transform: translate(15px, -25px) scale(1.05); }
-}
-.orb-animate         { animation: orb-float 8s ease-in-out infinite; }
-.orb-animate-reverse { animation: orb-float-reverse 10s ease-in-out infinite; }
-
-/* ══════════════════════════════════════════════
-   SCROLL LINE ANIMATION (hero indicator)
-   ══════════════════════════════════════════════ */
-@keyframes scroll-line {
-  0%   { transform: scaleY(0); transform-origin: top; }
-  50%  { transform: scaleY(1); transform-origin: top; }
-  51%  { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-.scroll-line-animate {
-  animation: scroll-line 1.8s ease-in-out infinite;
+/* ---- Animation Keyframes ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ══════════════════════════════════════════════
-   TIMELINE LINE ANIMATION (TheMaking section)
-   ══════════════════════════════════════════════ */
+@keyframes pulse-opacity {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 @keyframes draw-line {
-  from { width: 0; }
-  to   { width: 100%; }
-}
-.timeline-line-animate {
-  animation: draw-line 1.2s ease-out forwards;
+  from { stroke-dashoffset: var(--line-length, 1000); }
+  to { stroke-dashoffset: 0; }
 }
 
-/* ══════════════════════════════════════════════
-   PHASE INDICATOR (right rail)
-   ══════════════════════════════════════════════ */
-.phase-dot-active {
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUpDrawer {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.animate-pulse-opacity {
+  animation: pulse-opacity 2s ease-in-out infinite;
+}
+
+/* ---- Canvas Layer ---- */
+.canvas-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+/* ---- Blueprint Card Base ---- */
+.blueprint-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-blueprint);
+  position: relative;
+}
+
+.blueprint-card-amber {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-amber);
+  position: relative;
+}
+
+/* ---- Stamp Effect (for certifications) ---- */
+.stamp-border {
+  box-shadow:
+    inset 0 0 0 4px var(--bg-surface),
+    inset 0 0 0 6px var(--border-amber);
+}
+
+/* ---- Spec Sheet Table ---- */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-blueprint);
+  font-size: 11px;
+}
+
+.spec-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(100, 160, 220, 0.1);
+  vertical-align: top;
+}
+
+.spec-table td:first-child {
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  width: 110px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.spec-table td:last-child {
+  color: var(--text-primary);
+}
+
+/* ---- Gantt Bar ---- */
+.gantt-bar {
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-amber), var(--accent-amber-l));
+  transform-origin: left center;
+}
+
+/* ---- Mobile Overrides ---- */
+@media (max-width: 767px) {
+  .blueprint-card,
+  .blueprint-card-amber {
+    border-radius: 0;
+  }
+}
+
+/* ---- Ambient Glow ---- */
+.glow-blueprint {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: var(--accent-blueprint);
+  filter: blur(160px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.glow-amber {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
   background: var(--accent-amber);
-  box-shadow: 0 0 8px rgba(200,133,26,0.6);
+  filter: blur(160px);
+  opacity: 0.12;
+  pointer-events: none;
 }
-.phase-dot-inactive {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-}
-
-/* ══════════════════════════════════════════════
-   MOBILE ASSEMBLY CROSSFADE
-   ══════════════════════════════════════════════ */
-.mobile-phase-bg {
-  transition: opacity 0.4s ease-in-out;
-}
-
-/* ══════════════════════════════════════════════
-   STAT COUNTER ANIMATION
-   ══════════════════════════════════════════════ */
-@keyframes count-up-reveal {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.stat-revealed {
-  animation: count-up-reveal 0.6s ease-out forwards;
-}
-
-/* ══════════════════════════════════════════════
-   CARD ACCENT GRADIENTS
-   ══════════════════════════════════════════════ */
-.card-gradient-amber  { background: linear-gradient(135deg, rgba(200,133,26,0.12) 0%, rgba(200,133,26,0.03) 100%); }
-.card-gradient-blue   { background: linear-gradient(135deg, rgba(58,127,191,0.12) 0%, rgba(58,127,191,0.03) 100%); }
-.card-gradient-purple { background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(139,92,246,0.03) 100%); }

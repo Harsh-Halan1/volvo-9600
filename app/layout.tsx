@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Barlow_Condensed, DM_Sans, JetBrains_Mono } from 'next/font/google'
+import { Barlow_Condensed, DM_Sans, Share_Tech_Mono } from 'next/font/google'
 
 const barlow = Barlow_Condensed({
   subsets: ['latin'],
@@ -16,11 +16,11 @@ const dmSans = DM_Sans({
   weight: ['300', '400', '500'],
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const shareTechMono = Share_Tech_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
-  weight: ['400', '500'],
+  weight: ['400'],
 })
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${barlow.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={`${barlow.variable} ${dmSans.variable} ${shareTechMono.variable}`}
     >
       <body className="antialiased">
         {children}

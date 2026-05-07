@@ -1,4 +1,4 @@
-import MasterNarrative from "../components/MasterNarrative";
+import BlueprintMasterNarrative from "../components/blueprint/BlueprintMasterNarrative";
 
 export const metadata = {
   title: "Surendra & Co. | Master Coach Body Builders — Ahmedabad",
@@ -10,5 +10,5 @@ export const metadata = {
 };
 
 export default function Home() {
-  return <MasterNarrative />;
+  return <BlueprintMasterNarrative />;
 }
